@@ -30,3 +30,23 @@ class PostDetail(DetailView):
         context["tags"] = Tag.objects.all()
         context["recent_posts"] = Post.objects.all()[:3]
         return context
+
+class PostByCategory(ListView):
+    model = Post
+
+    def get_queryset(self) :
+        slug = self.kwargs['slug']
+        object_list = Post.objects.filter(
+            Q(category__name__icontains = slug)
+        )
+        return object_list
+    
+class PostByTags(ListView):
+    model = Post
+
+    def get_queryset(self) :
+        slug = self.kwargs['slug']
+        object_list = Post.objects.filter(
+            Q(tags__name__icontains = slug)
+        )
+        return object_list
