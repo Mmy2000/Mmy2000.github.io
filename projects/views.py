@@ -9,19 +9,17 @@ from django.db.models.query_utils import Q
 
 class ProjectList(ListView):
     model = Projects
-    template_name = 'projects/project_list.html'
     paginate_by = 2
     def get_queryset(self) :
         name = self.request.GET.get('q','')
-        object_list = Projects.objects.filter(
+        project_list = Projects.objects.filter(
             Q(title__icontains = name) |
             Q(description__icontains = name)
         )
-        return object_list
+        return project_list
     
 class ProjectDetail(DetailView):
     model = Projects
-    template_name = 'projects/project_details.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,10 +31,11 @@ class ProjectDetail(DetailView):
 class ProjectByCategory(ListView):
     model = Projects
 
+
     def get_queryset(self) :
         slug = self.kwargs['slug']
         object_list = Projects.objects.filter(
-            Q(category__name__icontains = slug)
+            Q(categoryproject__name__icontains = slug)
         )
         return object_list
     

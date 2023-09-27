@@ -14,7 +14,7 @@ class Projects(models.Model):
     image = models.ImageField(("image"),upload_to='projects/')
     created_at = models.DateTimeField( ("created_at"),default=timezone.now)
     description = models.TextField(("description"),max_length=100000)
-    categoryproject = models.ForeignKey('CategoryProject',related_name='project_category',verbose_name=('category'),on_delete=models.CASCADE)
+    categoryproject = models.ForeignKey('CategoryProject',related_name='project_category',verbose_name=('categoryproject'),on_delete=models.CASCADE)
     slug = models.SlugField(null=True,blank=True)
 
     def save(self,*args, **kwargs):
