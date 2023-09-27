@@ -18,3 +18,34 @@ class ProjectList(ListView):
             Q(description__icontains = name)
         )
         return object_list
+    
+class ProjectDetail(DetailView):
+    model = Projects
+    template_name = 'projects/project_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = CategoryProject.objects.all().annotate(project_count=Count('project_category'))
+        context["tags"] = Tag.objects.all()
+        context["recent_project"] = Projects.objects.all()[:3]
+        return context
+    
+class ProjectByCategory(ListView):
+    model = Projects
+
+    def get_queryset(self) :
+        slug = self.kwargs['slug']
+        object_list = Projects.objects.filter(
+            Q(category__name__icontains = slug)
+        )
+        return object_list
+    
+class ProjectByTags(ListView):
+    model = Projects
+
+    def get_queryset(self) :
+        slug = self.kwargs['slug']
+        object_list = Projects.objects.filter(
+            Q(tags__name__icontains = slug)
+        )
+        return object_list

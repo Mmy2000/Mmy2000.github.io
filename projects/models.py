@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
+from taggit.managers import TaggableManager
 from django.utils.text import slugify 
 
 
@@ -9,6 +10,7 @@ from django.utils.text import slugify
 class Projects(models.Model):
     auther = models.ForeignKey(User, related_name="project_auther",verbose_name=('auther'), on_delete=models.CASCADE)
     title = models.CharField(max_length=100,verbose_name=('title'))
+    tags = TaggableManager(("tags"))
     image = models.ImageField(("image"),upload_to='projects/')
     created_at = models.DateTimeField( ("created_at"),default=timezone.now)
     description = models.TextField(("description"),max_length=100000)
