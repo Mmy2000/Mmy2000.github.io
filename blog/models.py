@@ -15,7 +15,7 @@ class Post(models.Model):
     created_at = models.DateTimeField( ("created_at"),default=timezone.now)
     description = models.TextField(("description"),max_length=100000)
     category = models.ForeignKey('Category',related_name='post_category',verbose_name=('category'),on_delete=models.CASCADE)
-    slug = models.SlugField(("url"),null=True,blank=True)
+    slug = models.SlugField(null=True,blank=True)
 
     def save(self,*args, **kwargs):
         if not self.slug:
