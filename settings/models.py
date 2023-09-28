@@ -18,3 +18,15 @@ class About(models.Model):
 
     def __str__(self):
         return str(self.user)
+    
+
+class Resume(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    year = models.CharField(max_length=50 , blank=True, null=True)
+    subject = models.CharField(max_length=100 , blank=True, null=True)
+    university = models.CharField(max_length=100 , blank=True, null=True)
+    description = models.TextField(max_length=100000)
+
+    def __str__(self):
+        return str(self.user)
+
