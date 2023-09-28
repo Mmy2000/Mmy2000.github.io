@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import About , Resume , Services
 from projects.models import Projects
-from django.db.models import Count
+from blog.models import Post
 
 # Create your views here.
 
@@ -10,6 +10,9 @@ def home(request):
     project_count = Projects.objects.all().count() 
     resume = Resume.objects.all()
     service = Services.objects.all()
+    recent_project = Projects.objects.all().order_by('-created_at')[:6]
+    recent_blog = Post.objects.all().order_by('-created_at')[:3]
+
 
 
 
@@ -18,4 +21,6 @@ def home(request):
         'project_count':project_count,
         'resume':resume ,
         'service':service,
+        'recent_project':recent_project,
+        'recent_blog':recent_blog,
     })

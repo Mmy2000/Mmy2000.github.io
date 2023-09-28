@@ -41,7 +41,7 @@
                             </div>
                             <h3 class="heading"><a href="{{post.get_absolute_url}}">{{post}}</a>
                             </h3>
-                            <p>{{post.description}}.</p>
+                            <p>{{post.description|safe|truncatewords:10}}.</p>
                         </div>
                     </div>
                 </div>
