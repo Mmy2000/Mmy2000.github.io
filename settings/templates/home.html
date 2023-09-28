@@ -111,67 +111,18 @@
             </div>
         </div>
         <div class="row">
+            {% for service in service %}
             <div class="col-md-4 text-center d-flex ftco-animate">
                 <a href="#" class="services-1">
                     <span class="icon">
-                        <i class="flaticon-analysis"></i>
+                        <i class="{{service.category.icons}}"></i>
                     </span>
                     <div class="desc">
-                        <h3 class="mb-5">Web Design</h3>
+                        <h3 class="mb-5">{{service.category}}</h3>
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
-                    <span class="icon">
-                        <i class="flaticon-flasks"></i>
-                    </span>
-                    <div class="desc">
-                        <h3 class="mb-5">Phtography</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
-                    <span class="icon">
-                        <i class="flaticon-ideas"></i>
-                    </span>
-                    <div class="desc">
-                        <h3 class="mb-5">Web Developer</h3>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
-                    <span class="icon">
-                        <i class="flaticon-analysis"></i>
-                    </span>
-                    <div class="desc">
-                        <h3 class="mb-5">App Developing</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
-                    <span class="icon">
-                        <i class="flaticon-flasks"></i>
-                    </span>
-                    <div class="desc">
-                        <h3 class="mb-5">Branding</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
-                    <span class="icon">
-                        <i class="flaticon-ideas"></i>
-                    </span>
-                    <div class="desc">
-                        <h3 class="mb-5">Product Strategy</h3>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

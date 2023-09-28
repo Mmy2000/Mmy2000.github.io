@@ -29,4 +29,20 @@ class Resume(models.Model):
 
     def __str__(self):
         return str(self.user)
+    
 
+class Services(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    category = models.ForeignKey('Category',related_name='service_category',on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=60)
+    icons = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+    
