@@ -49,6 +49,9 @@ class Category(models.Model):
 class Info(models.Model):
     site_name = models.CharField( max_length=50)
     description = models.TextField(max_length=1000)
+    phone = models.CharField( max_length=30 , null=True, blank=True)
+    email = models.EmailField( max_length=254 , null=True, blank=True)
+    address = models.CharField( max_length=50 , null=True, blank=True)
     fb_link = models.URLField( max_length=200)
     twitter_link = models.URLField( max_length=200)
     instagram_link = models.URLField( max_length=200)
