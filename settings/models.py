@@ -52,6 +52,7 @@ class Info(models.Model):
     phone = models.CharField( max_length=30 , null=True, blank=True)
     email = models.EmailField( max_length=254 , null=True, blank=True)
     address = models.CharField( max_length=50 , null=True, blank=True)
+    image = models.ImageField(upload_to='users/', null=True, blank=True )
     fb_link = models.URLField( max_length=200)
     twitter_link = models.URLField( max_length=200)
     instagram_link = models.URLField( max_length=200)

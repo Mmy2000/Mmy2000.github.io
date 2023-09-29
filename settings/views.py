@@ -28,3 +28,6 @@ def home(request):
         'awards':awards,
         'Cups_of_coffee':Cups_of_coffee,
     })
+
+def contact(request):
+    return render(request , 'contact.html' , {})
