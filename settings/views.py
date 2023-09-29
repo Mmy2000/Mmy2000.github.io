@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.shortcuts import render
 from .models import About , Resume , Services
 from projects.models import Projects
 from blog.models import Post
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -30,4 +32,14 @@ def home(request):
     })
 
 def contact(request):
-    return render(request , 'contact.html' , {})
+    if request.method == "POST":
+        name = request.POST['your_name']
+        email = request.POST['your_email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        send_mail(['name'], ['email'], ['subject'],['message'], settings.EMAIL_HOST_USER)
+
+        return render(request , 'contact.html' , {'name':name})
+    else: 
+        return render(request , 'contact.html' , {})
