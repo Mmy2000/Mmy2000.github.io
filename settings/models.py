@@ -46,3 +46,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+class Info(models.Model):
+    site_name = models.CharField( max_length=50)
+    description = models.TextField(max_length=1000)
+    fb_link = models.URLField( max_length=200)
+    twitter_link = models.URLField( max_length=200)
+    instagram_link = models.URLField( max_length=200)
+
+    def __str__(self):
+        return self.site_name
