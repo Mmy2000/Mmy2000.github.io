@@ -10,6 +10,7 @@ from django.db.models.query_utils import Q
 
 class PostList(ListView):
     model = Post
+    paginate_by = 9
     def get_queryset(self) :
         name = self.request.GET.get('q','')
         object_list = Post.objects.filter(

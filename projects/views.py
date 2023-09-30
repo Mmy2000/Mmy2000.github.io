@@ -9,7 +9,7 @@ from django.db.models.query_utils import Q
 
 class ProjectList(ListView):
     model = Projects
-    paginate_by = 2
+    paginate_by = 12
     def get_queryset(self) :
         name = self.request.GET.get('q','')
         project_list = Projects.objects.filter(

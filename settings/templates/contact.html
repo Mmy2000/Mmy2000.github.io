@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-{% if name %}
+{% if email %}
 <center>
-    <h2>Thanks {{name}}</h2>
+    <h2>Thanks !</h2>
     <p>We Are Recieved Your Message </p>
 </center>
 {% else %}
@@ -59,11 +59,8 @@
 
         <div class="row no-gutters block-9">
             <div class="col-md-6 order-md-last d-flex">
-                <form action="{% url 'settings:contact' %}" method="POST" class="bg-light p-4 p-md-5 contact-form">
+                <form  method="POST" class="bg-light p-4 p-md-5 contact-form">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" name="your_name" class="form-control" placeholder="Your Name">
-                    </div>
                     <div class="form-group">
                         <input type="text" name="your_email" class="form-control" placeholder="Your Email">
                     </div>

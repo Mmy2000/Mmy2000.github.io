@@ -135,9 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_HOST_PASSOWRD = '*****'
-EMAIL_HOST_USER = 'my552915@gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = '587'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'efc06ccb625b48'
+EMAIL_HOST_PASSWORD = '********8c49'
+EMAIL_PORT = '2525'

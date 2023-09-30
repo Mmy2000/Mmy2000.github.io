@@ -33,13 +33,17 @@ def home(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST['your_name']
         email = request.POST['your_email']
         subject = request.POST['subject']
         message = request.POST['message']
 
-        send_mail(['name'], ['email'], ['subject'],['message'], settings.EMAIL_HOST_USER)
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False,
+        )
 
-        return render(request , 'contact.html' , {'name':name})
-    else: 
-        return render(request , 'contact.html' , {})
+
+    return render(request , 'contact.html' , {})
