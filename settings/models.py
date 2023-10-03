@@ -1,6 +1,10 @@
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify 
+from django.urls import reverse
+
+
 
 
 class About(models.Model):
@@ -34,9 +38,21 @@ class Resume(models.Model):
 class Services(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     category = models.ForeignKey('Category',related_name='service_category',on_delete=models.CASCADE)
+    slug = models.SlugField(null=True,blank=True)
+
+
+
+    def save(self,*args, **kwargs):
+        if not self.slug:
+            self.slug=slugify(self.category)
+        super(Services,self).save(*args,**kwargs)
+
 
     def __str__(self):
         return str(self.user)
+    
+    def get_absolute_url(self):
+        return reverse("service:service_detail", kwargs={"slug": self.slug})
 
 
 class Category(models.Model):

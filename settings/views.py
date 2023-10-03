@@ -47,3 +47,8 @@ def contact(request):
 
 
     return render(request , 'contact.html' , {})
+
+
+def service_detail(request,slug):
+    service=Services.objects.get(slug=slug)
+    return render(request , 'service_detail.html' , {'service':service})
