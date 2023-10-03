@@ -1,5 +1,10 @@
-from .models import Info
+from .models import Info , Services
 
 def myfooter(request):
     myfooter = Info.objects.last()
-    return {'myfooter':myfooter}
+    service = Services.objects.all()
+    context = {
+        'myfooter':myfooter , 
+        'service':service ,
+    }
+    return context

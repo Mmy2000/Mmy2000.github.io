@@ -33,22 +33,6 @@ def home(request):
         'Cups_of_coffee':Cups_of_coffee,
     })
 
-def contact(request):
-    if request.method == "POST":
-        email = request.POST['your_email']
-        subject = request.POST['subject']
-        message = request.POST['message']
-
-        send_mail(
-            subject,
-            message,
-            settings.EMAIL_HOST_USER,
-            [email],
-            fail_silently=False,
-        )
-
-
-    return render(request , 'contact.html' , {})
 
 
 class ServiceDetail(DetailView):
