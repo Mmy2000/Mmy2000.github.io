@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<section class="hero-wrap js-fullheight" style="background-image: url({% static 'images3/name2.jpg' %});"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+            <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
+                <h1 class="mb-3 bread">Service Detail</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+                            href="{% url 'projects:project_list' %}">Service <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Service Detail
+                        <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <h2 class="mb-3">{{object.category}}</h2>
+                <p>{{object.description}}</p>
+                <p>
+                    <img src="{{object.image.url}}" alt="" class="img-fluid">
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 sidebar ftco-animate">
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading-sidebar">Other Services</h3>
+                    {% for service in other_services  %}
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="blog-img mr-4" style="background-image: url({{service.image.url}});"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="{{service.get_absolute_url}}">{{service.category}}</a></h3>
+                            <div class="meta">
+                                <div><a href="{{service.get_absolute_url}}"><span
+                                            class="icon-calendar"></span>{{service.created_at}}</a></div>
+                                <div><a href="{{service.get_absolute_url}}"><span
+                                            class="icon-person"></span>{{service.user}}</a></div>
+                                <div><a href="{{service.get_absolute_url}}"><span class="icon-chat"></span> 19</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> <!-- .col-md-8 -->
+
+            </div>
+        </div>
+
+    </div>
+</section> <!-- .section -->
+
+
+
+{% endblock body %}

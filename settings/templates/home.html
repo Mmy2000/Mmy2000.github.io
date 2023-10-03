@@ -113,7 +113,7 @@
         <div class="row">
             {% for service in service %}
             <div class="col-md-4 text-center d-flex ftco-animate">
-                <a href="#" class="services-1">
+                <a href="{{service.get_absolute_url}}" class="services-1">
                     <span class="icon">
                         <i class="{{service.category.icons}}"></i>
                     </span>

@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify 
 from django.urls import reverse
+from django.utils import timezone
+
 
 
 
@@ -38,6 +40,9 @@ class Resume(models.Model):
 class Services(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     category = models.ForeignKey('Category',related_name='service_category',on_delete=models.CASCADE)
+    image = models.ImageField(("image"),upload_to='projects/',null=True,blank=True)
+    created_at = models.DateTimeField( ("created_at"),default=timezone.now)
+    description = models.TextField(("description"),max_length=100000,null=True,blank=True)
     slug = models.SlugField(null=True,blank=True)
 
 
@@ -52,7 +57,7 @@ class Services(models.Model):
         return str(self.user)
     
     def get_absolute_url(self):
-        return reverse("service:service_detail", kwargs={"slug": self.slug})
+        return reverse("home:service_detail", kwargs={"slug": self.slug})
 
 
 class Category(models.Model):

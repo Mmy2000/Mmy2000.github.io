@@ -4,6 +4,8 @@ from .models import About , Resume , Services
 from projects.models import Projects
 from blog.models import Post
 from django.core.mail import send_mail
+from django.views.generic import   DetailView
+
 
 # Create your views here.
 
@@ -49,6 +51,10 @@ def contact(request):
     return render(request , 'contact.html' , {})
 
 
-def service_detail(request,slug):
-    service=Services.objects.get(slug=slug)
-    return render(request , 'service_detail.html' , {'service':service})
+class ServiceDetail(DetailView):
+    model = Services
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["other_services"] = Services.objects.all()[:3]
+        return context
