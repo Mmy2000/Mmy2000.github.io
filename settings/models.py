@@ -80,3 +80,19 @@ class Info(models.Model):
 
     def __str__(self):
         return self.site_name
+    
+
+class MySkills(models.Model):
+    category = models.ForeignKey('CategorySkills',related_name='skills_category',on_delete=models.CASCADE)
+    percent = models.CharField(max_length=30)
+
+    
+    def __str__(self):
+        return str(self.category)
+
+
+class CategorySkills(models.Model):
+    name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name

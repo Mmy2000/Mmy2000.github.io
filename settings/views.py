@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
-from .models import About , Resume , Services
+from .models import About , Resume , Services , MySkills
 from projects.models import Projects
 from blog.models import Post
 from django.core.mail import send_mail
@@ -18,6 +18,7 @@ def home(request):
     service = Services.objects.all()
     recent_project = Projects.objects.all().order_by('-created_at')[:6]
     recent_blog = Post.objects.all().order_by('-created_at')[:3]
+    skills = MySkills.objects.all()
 
 
 
@@ -31,6 +32,7 @@ def home(request):
         'recent_blog':recent_blog,
         'awards':awards,
         'Cups_of_coffee':Cups_of_coffee,
+        'skills':skills
     })
 
 
