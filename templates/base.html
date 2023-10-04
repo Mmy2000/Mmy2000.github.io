@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{% static 'css3/style.css'%}">
 
 
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -98,7 +99,8 @@
                         <h2 class="ftco-heading-2">Services</h2>
                         <ul class="list-unstyled">
                             {% for service in service %}
-                            <li><a href="{{service.get_absolute_url}}"><span class="icon-long-arrow-right mr-2"></span>{{service.category}}</a></li>
+                            <li><a href="{{service.get_absolute_url}}"><span
+                                        class="icon-long-arrow-right mr-2"></span>{{service.category}}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

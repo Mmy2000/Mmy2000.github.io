@@ -33,3 +33,9 @@ class CategoryProject(models.Model):
     def __str__(self):
         return self.name
     
+class ImageProject(models.Model):
+    project = models.ForeignKey(Projects,related_name='project_image',on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='projectimages/')
+
+    def __str__(self):
+        return str(self.project)
