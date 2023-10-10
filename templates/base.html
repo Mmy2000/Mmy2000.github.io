@@ -98,7 +98,7 @@
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Services</h2>
                         <ul class="list-unstyled">
-                            {% for service in service %}
+                            {% for service in service_footer %}
                             <li><a href="{{service.get_absolute_url}}"><span
                                         class="icon-long-arrow-right mr-2"></span>{{service.category}}</a></li>
                             {% endfor %}
