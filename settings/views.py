@@ -4,7 +4,7 @@ from .models import About , Resume , Services , MySkills
 from projects.models import Projects
 from blog.models import Post
 from django.core.mail import send_mail
-from django.views.generic import   DetailView
+from django.views.generic import  ListView, DetailView
 
 
 # Create your views here.
@@ -36,6 +36,8 @@ def home(request):
     })
 
 
+class ServiceList(ListView):
+    model = Services
 
 class ServiceDetail(DetailView):
     model = Services

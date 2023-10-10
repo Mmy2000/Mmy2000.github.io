@@ -5,5 +5,6 @@ app_name = 'settings'
 
 urlpatterns = [
     path( '',views.home , name='home' ),   
+    path( 'service',views.ServiceList.as_view() , name='service_list' ),     
     path( '<slug:slug>',views.ServiceDetail.as_view() , name='service_detail' ),     
 ]
