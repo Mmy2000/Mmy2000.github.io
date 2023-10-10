@@ -10,7 +10,7 @@
                 <h1 class="mb-3 bread">Service Detail</h1>
                 <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
                                 class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
-                            href="{% url 'projects:project_list' %}">Service <i
+                            href="{% url 'settings:service_list' %}">Service <i
                                 class="ion-ios-arrow-forward"></i></a></span> <span>Service Detail
                         <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 ftco-animate">
-                <h2 class="mb-3">{{object.category}}</h2>
+                <h2 class="mb-3">{{object.name}}</h2>
                 <p>{{object.description}}</p>
                 <p>
                     <img src="{{object.image.url}}" alt="" class="img-fluid">
@@ -30,6 +30,23 @@
             </div>
 
             <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box">
+                    <form action="{% url 'settings:service_list' %}" method="GET" class="search-form">
+                        <div class="form-group">
+                            <span class="icon icon-search"></span>
+                            <input type="text" name="q" class="form-control" placeholder="Type a keyword and hit enter">
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading-sidebar">Categories</h3>
+                    <ul class="categories">
+                        {% for category in categories  %}
+                        <li><a href="{% url 'settings:service_by_category' category %}">{{category}}
+                                <span>{{category.service_count}}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
 
                 <div class="sidebar-box ftco-animate">
                     <h3 class="heading-sidebar">Other Services</h3>
@@ -37,7 +54,7 @@
                     <div class="block-21 mb-4 d-flex">
                         <a class="blog-img mr-4" style="background-image: url({{service.image.url}});"></a>
                         <div class="text">
-                            <h3 class="heading"><a href="{{service.get_absolute_url}}">{{service.category}}</a></h3>
+                            <h3 class="heading"><a href="{{service.get_absolute_url}}">{{service.name}}</a></h3>
                             <div class="meta">
                                 <div><a href="{{service.get_absolute_url}}"><span
                                             class="icon-calendar"></span>{{service.created_at}}</a></div>
@@ -48,10 +65,12 @@
                         </div>
                     </div>
                     {% endfor %}
-                </div> <!-- .col-md-8 -->
-
+                </div>
             </div>
+
+
         </div>
+
 
     </div>
 </section> <!-- .section -->

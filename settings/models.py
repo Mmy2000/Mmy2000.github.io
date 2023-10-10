@@ -39,6 +39,7 @@ class Resume(models.Model):
 
 class Services(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField( null=True,blank=True ,max_length=50)
     category = models.ForeignKey('CategoryService',related_name='service_category',on_delete=models.CASCADE)
     image = models.ImageField(("image"),upload_to='projects/',null=True,blank=True)
     created_at = models.DateTimeField( ("created_at"),default=timezone.now)
@@ -49,12 +50,12 @@ class Services(models.Model):
 
     def save(self,*args, **kwargs):
         if not self.slug:
-            self.slug=slugify(self.category)
+            self.slug=slugify(self.name)
         super(Services,self).save(*args,**kwargs)
 
 
     def __str__(self):
-        return str(self.category)
+        return str(self.name)
     
     def get_absolute_url(self):
         return reverse("home:service_detail", kwargs={"slug": self.slug})
