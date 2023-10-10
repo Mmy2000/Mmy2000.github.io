@@ -39,7 +39,7 @@ class Resume(models.Model):
 
 class Services(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    category = models.ForeignKey('Category',related_name='service_category',on_delete=models.CASCADE)
+    category = models.ForeignKey('CategoryService',related_name='service_category',on_delete=models.CASCADE)
     image = models.ImageField(("image"),upload_to='projects/',null=True,blank=True)
     created_at = models.DateTimeField( ("created_at"),default=timezone.now)
     description = models.TextField(("description"),max_length=100000,null=True,blank=True)
@@ -54,13 +54,13 @@ class Services(models.Model):
 
 
     def __str__(self):
-        return str(self.user)
+        return str(self.category)
     
     def get_absolute_url(self):
         return reverse("home:service_detail", kwargs={"slug": self.slug})
 
 
-class Category(models.Model):
+class CategoryService(models.Model):
     name = models.CharField(max_length=60)
     icons = models.CharField(max_length=30)
 
