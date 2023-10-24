@@ -19,6 +19,8 @@ class About(models.Model):
     zip_code = models.IntegerField(null=True, blank=True)
     image = models.ImageField(upload_to='users/', null=True, blank=True )
     email = models.EmailField( max_length=254, blank=True, null=True)
+    resume = models.FileField( upload_to='files/', max_length=100 ,blank=True, null=True)
+
 
 
 
